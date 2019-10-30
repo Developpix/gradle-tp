@@ -1,0 +1,32 @@
+plugins {
+    id 'java-library'
+    id 'checkstyle'
+}
+
+group 'org.iut.nantes'
+version '0.1.0'
+
+sourceCompatibility = "1.9"
+compileJava.options.encoding = "UTF-8"
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':calcul')
+}
+
+checkstyle {
+    toolVersion '8.25'
+    config = rootProject.resources.text.fromFile('config/checkstyle/sun_checks.xml')
+}
+
+checkstyleMain {
+    source = 'src/main/java'
+}
+
+checkstyleTest {
+    source = 'src/test/java'
+}
